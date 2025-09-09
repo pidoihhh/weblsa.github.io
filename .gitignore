@@ -1,0 +1,5 @@
+/output-*.csv
+/.document/
+/nbproject/private/
+/.Rhistory
+/.RData

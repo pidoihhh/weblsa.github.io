@@ -1,0 +1,34 @@
+{
+  "name": "HTML-Lag-Sequential-Analysis",
+  "version": "1.0.0",
+  "description": "This is a specialized web tool for lag sequential analysis. It primarily assists researchers in analyzing event-coded sequence data, followed by conducting lag sequential analysis tests. The test results are then presented in tables and social network diagrams, providing researchers with the necessary information to write reports on lag sequential analysis.",
+  "main": "index.js",
+  "scripts": {
+    "tag": "./build/tag.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://pulipuli.chen@gmail.com@github.com/pulipulichen/HTML-Lag-Sequential-Analysis.git"
+  },
+  "keywords": [
+    "jQuery",
+    "Sementic UI",
+    "jsPlumb",
+    "statistics-distributions.js"
+  ],
+  "author": {
+    "name": "Yung-Ting Chen",
+    "email": "blog@pulipuli.info",
+    "orcid": "https://orcid.org/0000-0003-3751-610X",
+    "url": "https://blog.pulipuli.info"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pulipulichen/HTML-Lag-Sequential-Analysis/issues"
+  },
+  "homepage": "https://github.com/pulipulichen/HTML-Lag-Sequential-Analysis#readme",
+  "devDependencies": {
+  },
+  "dependencies": {
+  }
+}

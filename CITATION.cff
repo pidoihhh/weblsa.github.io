@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using these metadata."
+authors:
+  - family-names: Chen
+    given-names: Yung-Ting
+    orcid: https://orcid.org/0000-0003-3751-610X
+    email: https://blog.pulipuli.info
+title: "HTML-Lag-Sequential-Analysis"
+license: "MIT"
+repository-code: "https://github.com/pulipulichen/HTML-Lag-Sequential-Analysis"
+abstract: "This is a specialized web tool for lag sequential analysis. It primarily assists researchers in analyzing event-coded sequence data, followed by conducting lag sequential analysis tests. The test results are then presented in tables and social network diagrams, providing researchers with the necessary information to write reports on lag sequential analysis."
