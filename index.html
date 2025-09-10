@@ -6,7 +6,7 @@
 
         <title>
 
-            滯後序列分析計算器 Lag Sequential Analysis
+           Lag Sequential Analysis
 
         </title>
 
@@ -135,11 +135,11 @@
 
     <div class="ui top attached tabular menu">
 
-        <div class="item" data-tab="mode_textarea">文字框輸入</div>
+        <div class="item" data-tab="mode_textarea">Text box input</div>
 
-        <div class="active item" data-tab="mode_file">選擇檔案輸入</div>
+        <div class="active item" data-tab="mode_file">Select file input</div>
 
-        <div class=" item" data-tab="mode_google_spreadsheet">Google試算表發佈連結</div>
+        <div class=" item" data-tab="mode_google_spreadsheet">Google Spreadsheet Release Link</div>
 
     </div>
 
@@ -149,7 +149,7 @@
 
         <div class="field">
 
-            <label for="input_data">請輸入CSV資料：一行一筆資料</label>
+            <label for="input_data">Please enter CSV data: one entry per line</label>
 
             <textarea class="change-trigger focus_select" 
 
@@ -167,11 +167,11 @@
 
             <label for="input_file">
 
-                請上傳CSV檔案： 
+                Please upload CSV file： 
 
-                (<a href="https://docs.google.com/spreadsheets/d/1Xf7HwjEDlslZpNF0yp7LXGl927HdjFQbAT0PLOrIuD8/export?format=csv">範例檔案1下載</a>, 
+                (<a href="https://docs.google.com/spreadsheets/d/1Xf7HwjEDlslZpNF0yp7LXGl927HdjFQbAT0PLOrIuD8/export?format=csv">Download sample file 1</a>, 
 
-                 <a href="https://docs.google.com/spreadsheets/d/1UTooTGvePmVCtRxKUYTfcUpt4kDjA_FtuoiKIHkRnuE/export?format=csv">範例檔案2下載</a>, 
+                 <a href="https://docs.google.com/spreadsheets/d/1UTooTGvePmVCtRxKUYTfcUpt4kDjA_FtuoiKIHkRnuE/export?format=csv">Download Sample File 2/a>, 
 
                  <a href="https://docs.google.com/spreadsheets/d/1UiDJg6UfLcxlnJCAW4UCdFHbcf7j_FNYmIAl92nf018/export?format=csv">English example</a>)
 
@@ -191,7 +191,7 @@
 
             <label for="input_url">
 
-                請輸入Google試算表發佈連結：(<a href="http://www.ioa.tw/google-sheets-api-note.html" target="pub">操作教學</a>) 
+                Please enter the Google Spreadsheet publishing link：(<a href="http://www.ioa.tw/google-sheets-api-note.html" target="pub">操作教學</a>) 
 
             </label>
 
@@ -225,13 +225,13 @@
 
     <h1 class="ui horizontal divider header">
 
-        分類與循序樣式探勘
+        Classification and sequential pattern exploration
 
     </h1>
 
     <div class="inline field">
 
-        <label for="input_dynamic_lag">滯後序列長度: </label>
+        <label for="input_dynamic_lag">Lagged sequence length: </label>
 
         <input id="input_dynamic_lag" type="text" value="3" placeholder="Event lag">
 
@@ -241,7 +241,7 @@
 
             <i class="download icon"></i> 
 
-            動態分類資料
+            Dynamic classification data
 
         </button>
 
@@ -249,7 +249,7 @@
 
             <i class="download icon"></i> 
 
-            貝氏網路結構檔(平面)
+           Bayesian network structure file (plane)
 
         </button>
 
@@ -257,15 +257,14 @@
 
             <i class="download icon"></i> 
 
-            貝氏網路結構檔(多層)
-
+           Bayesian network structure file (multi-layer)
         </button>
 
     </div>
 
     <div class="inline field">
 
-        <label>循序樣式探勘:</label>
+        <label>Sequential pattern exploration:</label>
 
         <a href="arulesSequences.r" target="_blank" download>
 
@@ -273,7 +272,7 @@
 
             <i class="download icon"></i> 
 
-            R腳本檔案: arulesSequences.r
+            R script archive: arulesSequences.r
 
         </button>
 
@@ -283,13 +282,13 @@
 
     <div class="inline field">
 
-        <label>區別分析(判別分析):</label>
+        <label>Discrimination analysis:</label>
 
         <button type="button" class="ui button teal tiny download-virtual-vars-button">
 
             <i class="download icon"></i> 
 
-            虛擬變數動態分類資料
+            Dynamic classification data of virtual variables
 
         </button>
 
@@ -310,8 +309,7 @@
 
 <h1 class="ui horizontal divider header">
 
-  事件轉移表編輯器
-
+  Event Sequence Table Editor
 </h1>
 
         <div class="ui segment" id="contingency_table">
@@ -456,7 +454,7 @@
 
                     <i class="add square icon"></i>
 
-                    增加事件編碼
+                    Add event encoding
 
                 </button>
 
@@ -491,7 +489,7 @@
 
         <label>
 
-          參與者
+          participants
 
         </label>
 
@@ -503,7 +501,7 @@
 
         <label>
 
-          額外編碼 (用空格區隔)
+          Additional codes (separated by spaces)
 
         </label>
 
@@ -523,7 +521,7 @@
 
                    value="input_count_same_adjacent_event" />
 
-            <label for="input_count_same_adjacent_event">僅分析有改變的序列</label>
+            <label for="input_count_same_adjacent_event">Analyze only sequences with changes</label>
 
         </div>
 
@@ -541,7 +539,7 @@
 
                    value="input_table_display_details" checked="checked"  />
 
-            <label for="input_table_display_details">顯示詳細資訊。</label>
+            <label for="input_table_display_details">Show details。</label>
 
         </div>
 
@@ -559,7 +557,7 @@
 
                  value="input_display_full_transfer_diagram" />
 
-          <label for="input_display_full_transfer_diagram">顯示完整的事件轉移圖。</label>
+          <label for="input_display_full_transfer_diagram">Display the complete event transition diagram。</label>
 
       </div>
 
@@ -591,7 +589,7 @@
 
           -->
 
-          <label for="connection_with_yule_q">使用Yule'Q來畫關聯線</label>
+          <label for="connection_with_yule_q">Using Yule'Q to draw dependency lines</label>
 
       </div>
 
@@ -599,7 +597,7 @@
 
         <label>
 
-          Yule'Q最小值:
+          Yule'Q minimum:
 
         </label>
 
@@ -619,7 +617,7 @@
 
                  value="connection_with_yule_q_sig_z" />
 
-          <label for="connection_with_yule_q_sig_z">使用Yule'Q畫關聯線時，只顯示z值有顯著的關聯線</label>
+          <label for="connection_with_yule_q_sig_z">When using Yule'Q to draw correlation lines, only the correlation lines with significant z values ​​are displayed.</label>
 
       </div>
 
@@ -639,7 +637,7 @@
 
                    value="input_enable_yates" checked="checked"  />
 
-            <label for="input_enable_yates">在符合以下的情況時，使用葉氏連續性校正 (Yate's continuity correction)：1. 2x2列聯表；2. 有細格期望值小於5個；3. 樣本總數超過20個。</label>
+            <label for="input_enable_yates">Use Yates's correction for continuity when the following conditions are met (Yate's continuity correction)：1. 2x2 contingency table; 2. The expected value of a cell is less than 5; 3. The total number of samples exceeds 20。</label>
 
         </div>
 
@@ -659,7 +657,7 @@
 
                    value="input_table_style_display"  />
 
-            <label for="input_table_style_display">使用無樣式表格(容易複製到其他文件)</label>
+            <label for="input_table_style_display">Use a plain table that is easy to copy into other documents</label>
 
         </div>
 
@@ -781,3 +779,4 @@
     </body>
 
 </html>
+
