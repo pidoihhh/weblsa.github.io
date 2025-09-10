@@ -1,782 +1,394 @@
 <!DOCTYPE html>
-
 <html>
-
-    <head>
-
-        <title>
-
-           Lag Sequential Analysis
-
-        </title>
-
-        <meta charset="UTF-8">
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <link rel="manifest" href="manifest.json" />
-
-        
-
-        <link rel="icon" type="image/png" href="icon.png" />
-
+    <head>
+        <title>
+            Lag Sequential Analysis Calculator
+        </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="manifest" href="manifest.json" />
+        
+        <link rel="icon" type="image/png" href="icon.png" />
 <link rel="stylesheet" href="style.css" />
-
-        
-
+        
 <link rel="stylesheet" href="//pulipulichen.github.io/blogger/posts/2016/12/semantic/semantic.min.css" />
-
 <!-- <link rel="stylesheet" href="//fontawesome.io/assets/font-awesome/css/font-awesome.css" /> -->
-
-    </head>
-
-    <body>
-
+    </head>
+    <body>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-
 <script src="//pulipulichen.github.io/blogger/posts/2016/12/semantic/semantic.min.js"></script>
-
 <script src="//pulipulichen.github.io/blogger/posts/2016/12/puli-util.clipboard.js"></script>
-
 <!--
-
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-
 -->
 
-
-
 <script src="jsPlumb/jsplumb.min.js"></script>
-
 <script src="jsPlumb/js-plumb-state_machine.js"></script>
-
-<link rel="stylesheet" href="jsPlumb/js-plumb-state_machine.css"  />
-
+<link rel="stylesheet" href="jsPlumb/js-plumb-state_machine.css"  />
 <script src='//code.responsivevoice.org/responsivevoice.js'></script>
 
-
-
 <script src="vendors/statistics-distributions.js"></script>
-
 <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-
-
 <script src="helpers/JSONHelper.js"></script>
-
 <script src="helpers/AsyncLoopHelper.js"></script>
 
-
-
 <script src="libs/contigency-table.js"></script>
-
 <script src="libs/result-display.js"></script>
-
 <script src="libs/dynamic-classification.js"></script>
-
 <script src="libs/LagSequentialAnalysisCalculator.js"></script>
-
 <script src="libs/drawPlainLagTable.js"></script>
 
-
-
 <script src="vendors/date-helper.js"></script>
-
 <script src="vendors/copy-helper.js"></script>
-
 <script src="vendors/data-persist-helper.js"></script>
 
-
-
 <script src="libs/drawFlow.js"></script>
-
 <script src="script.js"></script>
-
-
 
 <!-- ------------------------------------------------------------ -->
 
-
-
 <form class="file-process-framework ui form">
 
-
-
-  <div class="ui ">
-
-    <div class="column">
-
-<div class="ui segment">
-
-
-    
-
+  <div class="ui ">
+    <div class="column">
+	<div class="ui segment">
+	
+    
 <h1 class="ui horizontal divider header">
-
-  Input
-
+  Input
 </h1>
-
-
-
 
 
 <!-- --------------------------------- -->
 
-
-
 <div class="ui bottom attached active tab segment input-field-container">
+    
+    <!-- https://apps.lazza.dk/facebook/ -->
 
-    
-
-    <!-- https://apps.lazza.dk/facebook/ -->
-
-
-
-    <div class="ui top attached tabular menu">
-
-        <div class="item" data-tab="mode_textarea">Text box input</div>
-
-        <div class="active item" data-tab="mode_file">Select file input</div>
-
-        <div class=" item" data-tab="mode_google_spreadsheet">Google Spreadsheet Release Link</div>
-
-    </div>
-
-    
-
-    <div class="ui bottom attached  tab segment" data-tab="mode_textarea">
-
-        <div class="field">
-
-            <label for="input_data">Please enter CSV data: one entry per line</label>
-
-            <textarea class="change-trigger focus_select" 
-
-                      id="input_data"></textarea>
-
-        </div>
-
-    </div>
-
-    
-
-    <div class="ui bottom attached active tab segment" data-tab="mode_file">
-
-        <div class="field">
-
-            <label for="input_file">
-
-                Please upload CSV file： 
-
-                (<a href="https://docs.google.com/spreadsheets/d/1Xf7HwjEDlslZpNF0yp7LXGl927HdjFQbAT0PLOrIuD8/export?format=csv">Download sample file 1</a>, 
-
-                 <a href="https://docs.google.com/spreadsheets/d/1UTooTGvePmVCtRxKUYTfcUpt4kDjA_FtuoiKIHkRnuE/export?format=csv">Download Sample File 2/a>, 
-
-                 <a href="https://docs.google.com/spreadsheets/d/1UiDJg6UfLcxlnJCAW4UCdFHbcf7j_FNYmIAl92nf018/export?format=csv">English example</a>)
-
-            </label>
-
-            <input type="file" id="input_file" class="file-change-trigger" data-file-to-textarea="#input_data" />
-
-        </div>
-
-    </div>
-
-    
-
-    <div class="ui bottom attached  tab segment" data-tab="mode_google_spreadsheet">
-
-        <div class="field">
-
-            <label for="input_url">
-
-                Please enter the Google Spreadsheet publishing link：(<a href="http://www.ioa.tw/google-sheets-api-note.html" target="pub">操作教學</a>) 
-
-            </label>
-
-            <input type="text" id="input_url" class="google-spreadsheet-trigger focus_select" 
-
-                   data-sheet-selector="#input_url_sheet"
-
-                   data-file-to-textarea="#input_data"
-
-                   value="https://docs.google.com/spreadsheets/d/1DdtDGbZPUCjZj_ZLNca3vpsFeTSHQ1T7Grw-ZhiBudQ/pubhtml?gid=1050192646&single=true" />
-
-        </div> 
-
-    </div>
-
-    
-
+    <div class="ui top attached tabular menu">
+        <div class="item" data-tab="mode_textarea">Text Input</div>
+        <div class="active item" data-tab="mode_file">File Upload</div>
+        <div class=" item" data-tab="mode_google_spreadsheet">Google Sheets Published Link</div>
+    </div>
+    
+    <div class="ui bottom attached  tab segment" data-tab="mode_textarea">
+        <div class="field">
+            <label for="input_data">Please enter CSV data: one record per line</label>
+            <textarea class="change-trigger focus_select" 
+                      id="input_data"></textarea>
+        </div>
+    </div>
+    
+    <div class="ui bottom attached active tab segment" data-tab="mode_file">
+        <div class="field">
+            <label for="input_file">
+                Please upload CSV file: 
+                (<a href="https://docs.google.com/spreadsheets/d/1Xf7HwjEDlslZpNF0yp7LXGl927HdjFQbAT0PLOrIuD8/export?format=csv">Sample File 1 Download</a>, 
+                 <a href="https://docs.google.com/spreadsheets/d/1UTooTGvePmVCtRxKUYTfcUpt4kDjA_FtuoiKIHkRnuE/export?format=csv">Sample File 2 Download</a>, 
+                 <a href="https://docs.google.com/spreadsheets/d/1UiDJg6UfLcxlnJCAW4UCdFHbcf7j_FNYmIAl92nf018/export?format=csv">English example</a>)
+            </label>
+            <input type="file" id="input_file" class="file-change-trigger" data-file-to-textarea="#input_data" />
+        </div>
+    </div>
+    
+    <div class="ui bottom attached  tab segment" data-tab="mode_google_spreadsheet">
+        <div class="field">
+            <label for="input_url">
+                Please enter Google Sheets published link: (<a href="http://www.ioa.tw/google-sheets-api-note.html" target="pub">Tutorial</a>) 
+            </label>
+            <input type="text" id="input_url" class="google-spreadsheet-trigger focus_select" 
+                   data-sheet-selector="#input_url_sheet"
+                   data-file-to-textarea="#input_data"
+                   value="https://docs.google.com/spreadsheets/d/1DdtDGbZPUCjZj_ZLNca3vpsFeTSHQ1T7Grw-ZhiBudQ/pubhtml?gid=1050192646&single=true" />
+        </div> 
+    </div>
+    
 </div>
-
-
 
 <!-- -------------------------------------- -->
 
-
-
-</div> <!-- <div class="ui segment"> -->
-
-
+		</div> <!-- <div class="ui segment"> -->
 
 <div class="ui segment">
-
-    <h1 class="ui horizontal divider header">
-
-        Classification and sequential pattern exploration
-
-    </h1>
-
-    <div class="inline field">
-
-        <label for="input_dynamic_lag">Lagged sequence length: </label>
-
-        <input id="input_dynamic_lag" type="text" value="3" placeholder="Event lag">
-
-        
-
-        <button type="button" class="ui button teal tiny download-dynamic-classification-button">
-
-            <i class="download icon"></i> 
-
-            Dynamic classification data
-
-        </button>
-
-        <button type="button" class="ui button teal tiny download-bayes-net-flat-xml-button">
-
-            <i class="download icon"></i> 
-
-           Bayesian network structure file (plane)
-
-        </button>
-
-        <button type="button" class="ui button teal tiny download-bayes-net-xml-button">
-
-            <i class="download icon"></i> 
-
-           Bayesian network structure file (multi-layer)
-        </button>
-
-    </div>
-
-    <div class="inline field">
-
-        <label>Sequential pattern exploration:</label>
-
-        <a href="arulesSequences.r" target="_blank" download>
-
-        <button type="button" class="ui button teal tiny download-bayes-net-xml-button">
-
-            <i class="download icon"></i> 
-
-            R script archive: arulesSequences.r
-
-        </button>
-
-        </a>
-
-    </div>
-
-    <div class="inline field">
-
-        <label>Discrimination analysis:</label>
-
-        <button type="button" class="ui button teal tiny download-virtual-vars-button">
-
-            <i class="download icon"></i> 
-
-            Dynamic classification data of virtual variables
-
-        </button>
-
-    </div>
-
-        
-
-    
-
+    <h1 class="ui horizontal divider header">
+        Classification and Sequential Pattern Mining
+    </h1>
+    <div class="inline field">
+        <label for="input_dynamic_lag">Lag Sequential Length: </label>
+        <input id="input_dynamic_lag" type="text" value="3" placeholder="Event lag">
+        
+        <button type="button" class="ui button teal tiny download-dynamic-classification-button">
+            <i class="download icon"></i> 
+            Dynamic Classification Data
+        </button>
+        <button type="button" class="ui button teal tiny download-bayes-net-flat-xml-button">
+            <i class="download icon"></i> 
+            Bayesian Network Structure File (Flat)
+        </button>
+        <button type="button" class="ui button teal tiny download-bayes-net-xml-button">
+            <i class="download icon"></i> 
+            Bayesian Network Structure File (Multi-layer)
+        </button>
+    </div>
+    <div class="inline field">
+        <label>Sequential Pattern Mining:</label>
+        <a href="arulesSequences.r" target="_blank" download>
+        <button type="button" class="ui button teal tiny download-bayes-net-xml-button">
+            <i class="download icon"></i> 
+            R Script File: arulesSequences.r
+        </button>
+        </a>
+    </div>
+    <div class="inline field">
+        <label>Discriminant Analysis:</label>
+        <button type="button" class="ui button teal tiny download-virtual-vars-button">
+            <i class="download icon"></i> 
+            Virtual Variables Dynamic Classification Data
+        </button>
+    </div>
+        
+    
 </div> <!-- <div class="ui segment"> -->
-
-                
-
-        <div class="ui segment">
-
-
-    
-
+                
+        <div class="ui segment">
+	
+    
 <h1 class="ui horizontal divider header">
-
-  Event Sequence Table Editor
+  Event Transition Table Editor
 </h1>
-
-        <div class="ui segment" id="contingency_table">
-
-            <table class="ui table">
-
-                <thead>
-
-                    <tr>
-
-                        <th rowspan="2" colspan="2"></th>
-
-                        <th colspan="2" class="variable_x_th">
-
-                            Lag 1 (t)
-
-                            <input type="hidden" value="Lag 1 (t)" id="variable_x_name" />
-
-                        </th>
-
-                    </tr>
-
-                    <tr class="variable_x_tr">
-
-                        <th class="variable_th">
-
-                            <div class="ui action input">
-
-                                <input type="text" value="X1" class="variable_x" />
-
-                                <button class="ui icon button" type="button">
-
-                                <i class="minus square icon remove_attr"></i>
-
-                                </button>
-
-                            </div>
-
-                        </th>
-
-                        <th class="variable_th">
-
-                            <div class="ui action input">
-
-                                <input type="text" value="X2" class="variable_x" />
-
-                                <button class="ui icon button" type="button">
-
-                                <i class="minus square icon remove_attr"></i>
-
-                                </button>
-
-                            </div>
-
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <th rowspan="2" class="variable_y_th">
-
-                            Lag 0 (g)
-
-                            <input type="hidden" value="Lag 0 (g)" id="variable_y_name" />
-
-                        </th>
-
-                        <th class="variable_th">
-
-                            <div class="ui action input">
-
-                                <input type="text" value="Y1" class="variable_y" />
-
-                                <button class="ui icon button" type="button">
-
-                                <i class="minus square icon remove_attr"></i>
-
-                                </button>
-
-                            </div>
-
-                        </th>
-
-                        <td class="cell_td">
-
-                            <input type="text" value="35" class="vairable_cell" />
-
-                        </td>
-
-                        <td class="cell_td">
-
-                            <input type="text" value="20" class="vairable_cell" />
-
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <th class="variable_th">
-
-                            <div class="ui action input">
-
-                                <input type="text" value="Y2" class="variable_y" />
-
-                                <button class="ui icon button" type="button">
-
-                                <i class="minus square icon remove_attr"></i>
-
-                                </button>
-
-                            </div>
-
-                        </th>
-
-                        <td class="cell_td">
-
-                            <input type="text" value="45" class="vairable_cell" />
-
-                        </td>
-
-                        <td class="cell_td">
-
-                            <input type="text" value="40" class="vairable_cell" />
-
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-            <div class="contingency-table-row-plus">
-
-                <button type="button" class="ui button teal tiny add-button">
-
-                    <i class="add square icon"></i>
-
-                    Add event encoding
-
-                </button>
-
-            </div>
-
-            
-
-        </div>
-
-            
-
-        </div><!-- <div class="ui segment"> -->                
-
-
-
-  <!-- ------------------------------------------------- -->
-
-  
-
-  <div class="ui segment">
-
-
-    
-
+        <div class="ui segment" id="contingency_table">
+            <table class="ui table">
+                <thead>
+                    <tr>
+                        <th rowspan="2" colspan="2"></th>
+                        <th colspan="2" class="variable_x_th">
+                            Lag 1 (t)
+                            <input type="hidden" value="Lag 1 (t)" id="variable_x_name" />
+                        </th>
+                    </tr>
+                    <tr class="variable_x_tr">
+                        <th class="variable_th">
+                            <div class="ui action input">
+                                <input type="text" value="X1" class="variable_x" />
+                                <button class="ui icon button" type="button">
+                                <i class="minus square icon remove_attr"></i>
+                                </button>
+                            </div>
+                        </th>
+                        <th class="variable_th">
+                            <div class="ui action input">
+                                <input type="text" value="X2" class="variable_x" />
+                                <button class="ui icon button" type="button">
+                                <i class="minus square icon remove_attr"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="2" class="variable_y_th">
+                            Lag 0 (g)
+                            <input type="hidden" value="Lag 0 (g)" id="variable_y_name" />
+                        </th>
+                        <th class="variable_th">
+                            <div class="ui action input">
+                                <input type="text" value="Y1" class="variable_y" />
+                                <button class="ui icon button" type="button">
+                                <i class="minus square icon remove_attr"></i>
+                                </button>
+                            </div>
+                        </th>
+                        <td class="cell_td">
+                            <input type="text" value="35" class="vairable_cell" />
+                        </td>
+                        <td class="cell_td">
+                            <input type="text" value="20" class="vairable_cell" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="variable_th">
+                            <div class="ui action input">
+                                <input type="text" value="Y2" class="variable_y" />
+                                <button class="ui icon button" type="button">
+                                <i class="minus square icon remove_attr"></i>
+                                </button>
+                            </div>
+                        </th>
+                        <td class="cell_td">
+                            <input type="text" value="45" class="vairable_cell" />
+                        </td>
+                        <td class="cell_td">
+                            <input type="text" value="40" class="vairable_cell" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="contingency-table-row-plus">
+                <button type="button" class="ui button teal tiny add-button">
+                    <i class="add square icon"></i>
+                    Add Event Code
+                </button>
+            </div>
+            
+        </div>
+            
+        </div><!-- <div class="ui segment"> -->                
+
+  <!-- ------------------------------------------------- -->
+  
+  <div class="ui segment">
+	
+    
 <h1 class="ui horizontal divider header">
-
-  Setting
-
-</h1> 
-
-    <div class='inline field'>
-
-        <label>
-
-          participants
-
-        </label>
-
-        <input type="text" value="" class="change-trigger data-persist-setting" id="paticipant_code" />
-
-    </div>
-
-    <div class='inline field'>
-
-        <label>
-
-          Additional codes (separated by spaces)
-
-        </label>
-
-        <input type="text" value="" class="change-trigger data-persist-setting" id="extra_code" />
-
-    </div>
-
-    <div class="field">
-
-        <div class="ui checkbox">
-
-            <input type="checkbox" class="change-trigger-draw data-persist-setting" 
-
-                   name="input_count_same_adjacent_event"
-
-                   id="input_count_same_adjacent_event" 
-
-                   value="input_count_same_adjacent_event" />
-
-            <label for="input_count_same_adjacent_event">Analyze only sequences with changes</label>
-
-        </div>
-
-    </div>
-
-    <div class="field">
-
-        <div class="ui checkbox">
-
-            <input type="checkbox" class="change-trigger-draw data-persist-setting" 
-
-                   name="input_table_display_details"
-
-                   id="input_table_display_details" 
-
-                   value="input_table_display_details" checked="checked"  />
-
-            <label for="input_table_display_details">Show details。</label>
-
-        </div>
-
-    </div>
-
-    <div class="field">
-
-      <div class="ui checkbox">
-
-          <input type="checkbox" class="change-trigger-draw data-persist-setting" 
-
-                 name="input_display_full_transfer_diagram"
-
-                 id="input_display_full_transfer_diagram" 
-
-                 value="input_display_full_transfer_diagram" />
-
-          <label for="input_display_full_transfer_diagram">Display the complete event transition diagram。</label>
-
-      </div>
-
-    </div>
-
-      <div class="inline field">
-
-      <div class="ui checkbox">
-
-          <input type="checkbox" class="change-trigger-draw data-persist-setting" 
-
-                 name="connection_with_yule_q"
-
-                 id="connection_with_yule_q" 
-
-                 value="connection_with_yule_q" />
-
-          <!--
-
-          <input type="checkbox" class="change-trigger-draw" 
-
-                 name="connection_with_yule_q"
-
-                 id="connection_with_yule_q" 
-
-                 checked="checked"
-
-                 value="connection_with_yule_q" />
-
-          -->
-
-          <label for="connection_with_yule_q">Using Yule'Q to draw dependency lines</label>
-
-      </div>
-
-      <div class='inline field'>
-
-        <label>
-
-          Yule'Q minimum:
-
-        </label>
-
-        <input type="number" value="0.7" class="change-trigger-draw data-persist-setting" id="connection_with_yule_q_min" />
-
-      </div>
-
-      <div class="ui checkbox">
-
-          <input type="checkbox" class="change-trigger-draw data-persist-setting" 
-
-                 name="connection_with_yule_q_sig_z"
-
-                 id="connection_with_yule_q_sig_z" 
-
-                 checked="checked"
-
-                 value="connection_with_yule_q_sig_z" />
-
-          <label for="connection_with_yule_q_sig_z">When using Yule'Q to draw correlation lines, only the correlation lines with significant z values ​​are displayed.</label>
-
-      </div>
-
-    </div>
-
-    <!--
-
-    <div class="field">
-
-        <div class="ui checkbox">
-
-            <input type="checkbox" class="change-trigger-draw" 
-
-                   name="input_enable_yates"
-
-                   id="input_enable_yates" 
-
-                   value="input_enable_yates" checked="checked"  />
-
-            <label for="input_enable_yates">Use Yates's correction for continuity when the following conditions are met (Yate's continuity correction)：1. 2x2 contingency table; 2. The expected value of a cell is less than 5; 3. The total number of samples exceeds 20。</label>
-
-        </div>
-
-    </div>
-
-    -->
-
-    <div class="field">
-
-        <div class="ui checkbox">
-
-            <input type="checkbox" class="change-trigger-draw data-persist-setting" 
-
-                   name="input_table_style_display"
-
-                   id="input_table_style_display" 
-
-                   value="input_table_style_display"  />
-
-            <label for="input_table_style_display">Use a plain table that is easy to copy into other documents</label>
-
-        </div>
-
-    </div>
-
-        </div><!-- <div class="ui segment"> -->    
-
-        
-
-        
-
-</div> <!-- <div class="column"> -->
-
-  <!-- -------------------------------------- -->
-
-    <div class="column">
-
-  <div class="ui segment display-result" style="">
-
-  <!-- <div class="display-result"> -->
-
-  
-
-    <h1 class="ui horizontal divider header">
-
-      Result
-
-    </h1>
-
-    <div class="field" style="display: none;">
-
-      <button type="button" class="fluid ui large right labeled icon green button download-file">
-
-        <i class="right download icon"></i>
-
-        DOWNLOAD
-
-      </button>
-
-    </div>
-
-
-
-    <div class="field" style="display: none;">
-
-      <label for="filename">File Name: </label>
-
-      <input type="text" onfocus="this.select()" id="filename" class="filename" style="width: calc(100% - 15em)" />
-
-    </div>
-
-    
-
-    <div class="field">
-
-      <label for="preview">
-
-        <button type="button" id="copy_source_code" class="hide">Copy Source Code</button>
-
-        <div class="ui  pointing below  medium blue basic label encoding" style="margin-left: 1em; display: none;">
-
-          Get error encoding text? <a href="http://blog.pulipuli.info/2016/12/utf-8notepad-how-to-convert-plain-text.html" target="notepad" >Try to Convert TXT file to UTF8 encoding?</a>
-
-        </div>
-
-      </label>
-
-        
-
-      <textarea id="preview" 
-
-                style="display: none;"
-
-                class="preview hide focus_select" ></textarea>
-
-    </div>
-
-
-  <div id="preview_html" class="ui segment" ></div>
-
-  
-
-  
-
-  </div>
-
-    </div> <!-- <div class="column"> -->
-
-  </div> <!-- <div class="ui two column doubling grid"> -->
-
+  Settings
+</h1> 
+    <div class='inline field'>
+        <label>
+          Participant
+        </label>
+        <input type="text" value="" class="change-trigger data-persist-setting" id="paticipant_code" />
+    </div>
+    <div class='inline field'>
+        <label>
+          Additional Codes (separated by spaces)
+        </label>
+        <input type="text" value="" class="change-trigger data-persist-setting" id="extra_code" />
+    </div>
+    <div class="field">
+        <div class="ui checkbox">
+            <input type="checkbox" class="change-trigger-draw data-persist-setting" 
+                   name="input_count_same_adjacent_event"
+                   id="input_count_same_adjacent_event" 
+                   value="input_count_same_adjacent_event" />
+            <label for="input_count_same_adjacent_event">Only analyze sequences with changes</label>
+        </div>
+    </div>
+    <div class="field">
+        <div class="ui checkbox">
+            <input type="checkbox" class="change-trigger-draw data-persist-setting" 
+                   name="input_table_display_details"
+                   id="input_table_display_details" 
+                   value="input_table_display_details" checked="checked"  />
+            <label for="input_table_display_details">Display detailed information</label>
+        </div>
+    </div>
+    <div class="field">
+      <div class="ui checkbox">
+          <input type="checkbox" class="change-trigger-draw data-persist-setting" 
+                 name="input_display_full_transfer_diagram"
+                 id="input_display_full_transfer_diagram" 
+                 value="input_display_full_transfer_diagram" />
+          <label for="input_display_full_transfer_diagram">Display complete event transition diagram</label>
+      </div>
+    </div>
+      <div class="inline field">
+      <div class="ui checkbox">
+          <input type="checkbox" class="change-trigger-draw data-persist-setting" 
+                 name="connection_with_yule_q"
+                 id="connection_with_yule_q" 
+                 value="connection_with_yule_q" />
+          <!--
+          <input type="checkbox" class="change-trigger-draw" 
+                 name="connection_with_yule_q"
+                 id="connection_with_yule_q" 
+                 checked="checked"
+                 value="connection_with_yule_q" />
+          -->
+          <label for="connection_with_yule_q">Use Yule's Q to draw connection lines</label>
+      </div>
+      <div class='inline field'>
+        <label>
+          Yule's Q minimum value:
+        </label>
+        <input type="number" value="0.7" class="change-trigger-draw data-persist-setting" id="connection_with_yule_q_min" />
+      </div>
+      <div class="ui checkbox">
+          <input type="checkbox" class="change-trigger-draw data-persist-setting" 
+                 name="connection_with_yule_q_sig_z"
+                 id="connection_with_yule_q_sig_z" 
+                 checked="checked"
+                 value="connection_with_yule_q_sig_z" />
+          <label for="connection_with_yule_q_sig_z">When using Yule's Q to draw connection lines, only show connections with significant z-values</label>
+      </div>
+    </div>
+    <!--
+    <div class="field">
+        <div class="ui checkbox">
+            <input type="checkbox" class="change-trigger-draw" 
+                   name="input_enable_yates"
+                   id="input_enable_yates" 
+                   value="input_enable_yates" checked="checked"  />
+            <label for="input_enable_yates">Use Yates' continuity correction when the following conditions are met: 1. 2x2 contingency table; 2. Expected cell frequency less than 5; 3. Total sample size exceeds 20.</label>
+        </div>
+    </div>
+    -->
+    <div class="field">
+        <div class="ui checkbox">
+            <input type="checkbox" class="change-trigger-draw data-persist-setting" 
+                   name="input_table_style_display"
+                   id="input_table_style_display" 
+                   value="input_table_style_display"  />
+            <label for="input_table_style_display">Use unstyled table (easy to copy to other documents)</label>
+        </div>
+    </div>
+        </div><!-- <div class="ui segment"> -->    
+        
+        
+	</div> <!-- <div class="column"> -->
+  <!-- -------------------------------------- -->
+    <div class="column">
+  <div class="ui segment display-result" style="">
+  <!-- <div class="display-result"> -->
+  
+    <h1 class="ui horizontal divider header">
+      Result
+    </h1>
+    <div class="field" style="display: none;">
+      <button type="button" class="fluid ui large right labeled icon green button download-file">
+        <i class="right download icon"></i>
+        DOWNLOAD
+      </button>
+    </div>
+
+    <div class="field" style="display: none;">
+      <label for="filename">File Name: </label>
+      <input type="text" onfocus="this.select()" id="filename" class="filename" style="width: calc(100% - 15em)" />
+    </div>
+    
+    <div class="field">
+      <label for="preview">
+        <button type="button" id="copy_source_code" class="hide">Copy Source Code</button>
+        <div class="ui  pointing below  medium blue basic label encoding" style="margin-left: 1em; display: none;">
+          Get error encoding text? <a href="http://blog.pulipuli.info/2016/12/utf-8notepad-how-to-convert-plain-text.html" target="notepad" >Try to Convert TXT file to UTF8 encoding?</a>
+        </div>
+      </label>
+        
+      <textarea id="preview" 
+                style="display: none;"
+                class="preview hide focus_select" ></textarea>
+    </div>
+	
+  <div id="preview_html" class="ui segment" ></div>
+  
+  
+  </div>
+    </div> <!-- <div class="column"> -->
+  </div> <!-- <div class="ui two column doubling grid"> -->
 </form>
 
-
-
 <!-- ------------------------------------------------------------ -->
-
 <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-
-
-  ga('create', 'UA-37178375-7', 'auto');
-
-  ga('send', 'pageview');
-
-
+  ga('create', 'UA-37178375-7', 'auto');
+  ga('send', 'pageview');
 
 </script>
 
-
-
-    </body>
-
+    </body>
 </html>
-
